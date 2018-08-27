@@ -19,7 +19,8 @@
                     "line": 34
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -40,7 +41,8 @@
                     "line": 38
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -61,7 +63,8 @@
                     "line": 42
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         }
     ],
     "imports": {

@@ -15,7 +15,8 @@
                     "line": 4
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -64,7 +65,8 @@
                     "line": 8
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -125,7 +127,8 @@
                     "line": 14
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -145,7 +148,8 @@
                     "line": 24
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -160,7 +164,8 @@
                     "line": 29
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -175,7 +180,8 @@
                     "line": 33
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -190,7 +196,8 @@
                     "line": 37
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -212,7 +219,8 @@
                     "line": 41
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -227,7 +235,8 @@
                     "line": 48
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -242,7 +251,8 @@
                     "line": 53
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -257,7 +267,8 @@
                     "line": 57
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -272,7 +283,8 @@
                     "line": 61
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -300,7 +312,8 @@
                     "line": 65
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -323,7 +336,8 @@
                     "line": 69
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -345,7 +359,8 @@
                     "line": 73
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -368,7 +383,8 @@
                     "line": 77
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -390,7 +406,8 @@
                     "line": 81
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": "TODO: Expr",
@@ -405,7 +422,8 @@
                     "line": 85
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         },
         {
             "expression": {
@@ -433,7 +451,8 @@
                     "line": 99
                 }
             },
-            "type": "Definition"
+            "type": "Definition",
+            "typeAnnotation": null
         }
     ],
     "imports": {},

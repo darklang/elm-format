@@ -4,6 +4,12 @@
         {
             "expression": "TODO: Expr",
             "name": "token",
+            "returnType": {
+                "type": "TypeReference",
+                "name": "String",
+                "module": "String",
+                "arguments": []
+            },
             "sourceLocation": {
                 "end": {
                     "col": 12,
@@ -53,6 +59,17 @@
                 "type": "FunctionApplication"
             },
             "name": "theBestClass",
+            "returnType": {
+                "type": "TypeReference",
+                "name": "Attribute",
+                "module": "Html.Attributes",
+                "arguments": [
+                    {
+                        "type": "TypeVariable",
+                        "name": "msg"
+                    }
+                ]
+            },
             "sourceLocation": {
                 "end": {
                     "col": 21,
@@ -83,6 +100,27 @@
                 "type": "ExternalReference"
             },
             "name": "text",
+            "returnType": {
+                "argumentTypes": [
+                    {
+                        "type": "TypeReference",
+                        "name": "String",
+                        "module": "String"
+                    }
+                ],
+                "returnType": {
+                    "type": "TypeReference",
+                    "name": "Html",
+                    "module": null,
+                    "arguments": [
+                        {
+                            "type": "TypeVariable",
+                            "name": "msg"
+                        }
+                    ]
+                },
+                "type": "FunctionType"
+            },
             "sourceLocation": {
                 "end": {
                     "col": 14,
@@ -249,6 +287,17 @@
                 "type": "FunctionApplication"
             },
             "name": "main",
+            "returnType": {
+                "arguments": [
+                    {
+                        "name": "msg",
+                        "type": "TypeVariable"
+                    }
+                ],
+                "module": null,
+                "name": "Html",
+                "type": "TypeReference"
+            },
             "sourceLocation": {
                 "end": {
                     "col": 10,
