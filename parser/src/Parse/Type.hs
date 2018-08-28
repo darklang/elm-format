@@ -51,7 +51,10 @@ capTypeVar =
 constructor0 :: IParser AST.TypeConstructor
 constructor0 =
   do  name <- capTypeVar
-      return (AST.NamedConstructor name)
+      case reverse name of
+        [] -> error "Impossible empty TypeConstructor name"
+        last:rest ->
+            return (AST.NamedConstructor (reverse rest) last)
 
 
 constructor0' :: IParser AST.Type

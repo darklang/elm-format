@@ -17,6 +17,8 @@ import qualified Data.List as List
 import qualified Data.Map.Strict as Map
 import qualified ElmFormat.Version
 import qualified Reporting.Region as Region
+import qualified ReversedList
+import ReversedList (Reversed)
 
 
 pleaseReport :: String -> String -> a
@@ -422,15 +424,29 @@ instance ToJSON Type where
                     , ( "name", JSString $ toJSString name )
                     ]
 
-            FunctionType (first, _) rest _ ->
-                makeObj
-                    [ type_ "FunctionType"
-                    , ( "returnType", showJSON first) -- TODO
-                    , ( "argumentTypes", JSNull )
-                    ]
+            FunctionType first rest _ ->
+                case firstRestToRestLast first rest of
+                    (args, (last, _)) ->
+                        makeObj
+                            [ type_ "FunctionType"
+                            , ( "returnType", showJSON last)
+                            , ( "argumentTypes", JSArray $ fmap (\(t, _, _, _) -> showJSON t) $ args )
+                            ]
 
             _ ->
                 JSString $ toJSString $ "TODO: Type (" ++ show type' ++ ")"
+        where
+            firstRestToRestLast :: (x, d) -> List (a, b, x, d) -> (List (x, d, a, b), (x, d))
+            firstRestToRestLast first rest =
+                done $ foldl (flip step) (ReversedList.empty, first) rest
+                where
+                    step :: (a, b, x, d) -> (Reversed (x, d, a, b), (x, d)) -> (Reversed (x, d, a, b), (x, d))
+                    step (a, b, next, dn) (acc, (last, dl)) =
+                        (ReversedList.push (last, dl, a, b) acc, (next, dn))
+
+                    done :: (Reversed (x, d, a, b), (x, d)) -> (List (x, d, a, b), (x, d))
+                    done (acc, last) =
+                        (ReversedList.toList acc, last)
 
 
 type_ :: String -> (String, JSValue)

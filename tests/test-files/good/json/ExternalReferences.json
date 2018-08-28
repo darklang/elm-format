@@ -60,15 +60,15 @@
             },
             "name": "theBestClass",
             "returnType": {
-                "type": "TypeReference",
-                "name": "Attribute",
-                "module": "Html.Attributes",
                 "arguments": [
                     {
-                        "type": "TypeVariable",
-                        "name": "msg"
+                        "name": "msg",
+                        "type": "TypeVariable"
                     }
-                ]
+                ],
+                "module": "Html.Attributes",
+                "name": "Attribute",
+                "type": "TypeReference"
             },
             "sourceLocation": {
                 "end": {
@@ -103,21 +103,22 @@
             "returnType": {
                 "argumentTypes": [
                     {
-                        "type": "TypeReference",
+                        "arguments": [],
+                        "module": null,
                         "name": "String",
-                        "module": "String"
+                        "type": "TypeReference"
                     }
                 ],
                 "returnType": {
-                    "type": "TypeReference",
-                    "name": "Html",
-                    "module": null,
                     "arguments": [
                         {
-                            "type": "TypeVariable",
-                            "name": "msg"
+                            "name": "msg",
+                            "type": "TypeVariable"
                         }
-                    ]
+                    ],
+                    "module": null,
+                    "name": "Html",
+                    "type": "TypeReference"
                 },
                 "type": "FunctionType"
             },

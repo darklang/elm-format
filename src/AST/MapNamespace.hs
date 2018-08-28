@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
 module AST.MapNamespace where
 
 import AST.Declaration
@@ -24,12 +26,56 @@ instance MapNamespace Expr' where
                 mapExpr (mapNamespace f) expr
 
 
+instance MapNamespace Type' where
+    mapNamespace f typ =
+        case typ of
+            UnitType comments ->
+                UnitType comments
+
+            TypeConstruction ctor args ->
+                TypeConstruction (mapNamespace f ctor) (mapNamespace f args)
+
+            TypeParens nested ->
+                TypeParens (mapNamespace f nested)
+
+            TupleType entries ->
+                TupleType (mapNamespace f entries)
+
+            RecordType base fields trailingComments forceMultiline ->
+                RecordType base (mapNamespace f fields) trailingComments forceMultiline
+
+            FunctionType first rest forceMultiline ->
+                FunctionType (mapNamespace f first) (fmap (\(a, b, x, d) -> (a, b, mapNamespace f x, d)) rest) forceMultiline
+
+
+instance MapNamespace TypeConstructor where
+    mapNamespace f ctor =
+        case ctor of
+            NamedConstructor namespace name ->
+                NamedConstructor (f namespace) name
+
+            TupleConstructor n ->
+                TupleConstructor n
+
+
 instance MapNamespace Declaration where
     mapNamespace f decl =
         case decl of
             -- TODO: map references in patterns
             Definition first rest comments expr ->
                 Definition first rest comments (mapNamespace f expr)
+
+            TypeAnnotation name typ ->
+                TypeAnnotation name (mapNamespace f typ)
+
+            Datatype nameWithArgs tags ->
+                Datatype nameWithArgs (fmap (\(name, args) -> (name, fmap (mapNamespace f) args)) tags)
+
+            TypeAlias comments name typ ->
+                TypeAlias comments name (mapNamespace f typ)
+
+            PortAnnotation name comments typ ->
+                PortAnnotation name comments (mapNamespace f typ)
 
             PortDefinition name comments expr ->
                 PortDefinition name comments (mapNamespace f expr)
@@ -57,3 +103,15 @@ instance MapNamespace a => MapNamespace (TopLevelStructure a) where
 
 instance MapNamespace a => MapNamespace (Located a) where
     mapNamespace f (A region a) = A region (mapNamespace f a)
+
+
+instance MapNamespace a => MapNamespace (PreCommented a) where
+    mapNamespace f (pre, a) = (pre, mapNamespace f a)
+
+
+instance MapNamespace a => MapNamespace (WithEol a) where
+    mapNamespace f (a, eol) = (mapNamespace f a, eol)
+
+
+instance MapNamespace a => MapNamespace (Commented a) where
+    mapNamespace f (Commented pre a post) = Commented pre (mapNamespace f a) post

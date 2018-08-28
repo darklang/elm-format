@@ -121,6 +121,12 @@ data OpenCommentedList a
     = OpenCommentedList [Commented (WithEol a)] (PreCommented (WithEol a))
     deriving (Eq, Show)
 
+
+instance Functor OpenCommentedList where
+    fmap f (OpenCommentedList rest (pre, (last, eol))) =
+        OpenCommentedList (fmap (\(Commented a (x, b) c) -> Commented a (f x, b) c) rest) (pre, (f last, eol))
+
+
 exposedToOpen :: Comments -> ExposedCommentedList a -> OpenCommentedList a
 exposedToOpen pre exposed =
     case exposed of
@@ -188,7 +194,7 @@ data Literal
 
 
 data TypeConstructor
-    = NamedConstructor [UppercaseIdentifier]
+    = NamedConstructor [UppercaseIdentifier] UppercaseIdentifier
     | TupleConstructor Int -- will be 2 or greater, indicating the number of elements in the tuple
     deriving (Eq, Show)
 
