@@ -61,7 +61,12 @@ type PreCommented a = (Comments, a)
 type PostCommented a = (a, Comments)
 
 
-type WithEol a = (a, Maybe String)
+data WithEol a = WithEol a (Maybe String)
+    deriving (Eq, Show)
+
+
+instance Functor WithEol where
+    fmap f (WithEol a eol) = WithEol (f a) eol
 
 
 {-| This represents a list of things separated by comments.
@@ -123,8 +128,8 @@ data OpenCommentedList a
 
 
 instance Functor OpenCommentedList where
-    fmap f (OpenCommentedList rest (pre, (last, eol))) =
-        OpenCommentedList (fmap (\(Commented a (x, b) c) -> Commented a (f x, b) c) rest) (pre, (f last, eol))
+    fmap f (OpenCommentedList rest (pre, last)) =
+        OpenCommentedList (fmap (fmap $ fmap f) rest) (pre, fmap f last)
 
 
 exposedToOpen :: Comments -> ExposedCommentedList a -> OpenCommentedList a
@@ -153,6 +158,11 @@ data Pair key value =
         , forceMultiline :: ForceMultiline
         }
     deriving (Show, Eq)
+
+
+instance Functor (Pair key) where
+    fmap f (Pair key (pre, value) forceMultiline) =
+        Pair key (pre, f value) forceMultiline
 
 
 data Multiline

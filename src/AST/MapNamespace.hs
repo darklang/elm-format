@@ -7,7 +7,6 @@ import AST.Expression
 import AST.MapExpr
 import AST.Variable
 import AST.V0_16
-import Reporting.Annotation
 
 
 class MapNamespace a where
@@ -31,6 +30,9 @@ instance MapNamespace Type' where
         case typ of
             UnitType comments ->
                 UnitType comments
+
+            TypeVariable name ->
+                TypeVariable name
 
             TypeConstruction ctor args ->
                 TypeConstruction (mapNamespace f ctor) (mapNamespace f args)
@@ -91,27 +93,5 @@ instance MapNamespace Ref where
             OpRef name -> OpRef name
 
 
-instance MapNamespace a => MapNamespace [a] where
-    mapNamespace f list = fmap (mapNamespace f) list
-
-
-instance MapNamespace a => MapNamespace (TopLevelStructure a) where
-    mapNamespace f struct =
-        case struct of
-            Entry a -> Entry $ mapNamespace f a
-            _ -> struct
-
-instance MapNamespace a => MapNamespace (Located a) where
-    mapNamespace f (A region a) = A region (mapNamespace f a)
-
-
-instance MapNamespace a => MapNamespace (PreCommented a) where
-    mapNamespace f (pre, a) = (pre, mapNamespace f a)
-
-
-instance MapNamespace a => MapNamespace (WithEol a) where
-    mapNamespace f (a, eol) = (mapNamespace f a, eol)
-
-
-instance MapNamespace a => MapNamespace (Commented a) where
-    mapNamespace f (Commented pre a post) = Commented pre (mapNamespace f a) post
+instance (MapNamespace a, Functor f) => MapNamespace (f a) where
+    mapNamespace f = fmap (mapNamespace f)

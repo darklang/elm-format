@@ -26,9 +26,9 @@ tuple =
             return $ AST.UnitType comments
         Right [] ->
             return $ AST.UnitType []
-        Right [AST.Commented [] (t, Nothing) []] ->
+        Right [AST.Commented [] (AST.WithEol t Nothing) []] ->
             return $ A.drop t
-        Right [AST.Commented pre (t, eol) post] ->
+        Right [AST.Commented pre (AST.WithEol t eol) post] ->
             return $ AST.TypeParens (AST.Commented pre t (maybeToList (fmap AST.LineComment eol) ++ post))
         Right types' ->
             return $ AST.TupleType types'

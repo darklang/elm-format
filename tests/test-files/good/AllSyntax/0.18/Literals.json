@@ -5,6 +5,7 @@
                 "type": "UnitLiteral"
             },
             "name": "unit",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 7,
@@ -15,8 +16,7 @@
                     "line": 4
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -55,6 +55,7 @@
                 "type": "ListLiteral"
             },
             "name": "boolean",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -65,8 +66,7 @@
                     "line": 8
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -117,6 +117,7 @@
                 "type": "ListLiteral"
             },
             "name": "integer",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -127,8 +128,7 @@
                     "line": 14
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -138,6 +138,7 @@
                 "type": "ListLiteral"
             },
             "name": "float",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -148,12 +149,12 @@
                     "line": 24
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "string",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 13,
@@ -164,12 +165,12 @@
                     "line": 29
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "stringWithUnicodeCharacters",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 22,
@@ -180,12 +181,12 @@
                     "line": 33
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "stringWithSpecialEscapedCharacters",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 15,
@@ -196,8 +197,7 @@
                     "line": 37
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -209,6 +209,7 @@
                 "type": "ListLiteral"
             },
             "name": "stringWithEscapedControlCharacters",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -219,12 +220,12 @@
                     "line": 41
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "stringWithWindowsWorkaroundCharacters",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 8,
@@ -235,12 +236,12 @@
                     "line": 48
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "stringWithEscapedNonPrintCharacters",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 33,
@@ -251,12 +252,12 @@
                     "line": 53
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "stringWithWhitespace",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 20,
@@ -267,12 +268,12 @@
                     "line": 57
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "char",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 8,
@@ -283,8 +284,7 @@
                     "line": 61
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -302,6 +302,7 @@
                 "type": "ListLiteral"
             },
             "name": "unicodeChars",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 52,
@@ -312,8 +313,7 @@
                     "line": 65
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -326,6 +326,7 @@
                 "type": "ListLiteral"
             },
             "name": "escapedSpecialChars",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 31,
@@ -336,8 +337,7 @@
                     "line": 69
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -349,6 +349,7 @@
                 "type": "ListLiteral"
             },
             "name": "escapedControlChars",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 31,
@@ -359,8 +360,7 @@
                     "line": 73
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -373,6 +373,7 @@
                 "type": "ListLiteral"
             },
             "name": "escapedNonPrintChars",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 49,
@@ -383,8 +384,7 @@
                     "line": 77
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -396,6 +396,7 @@
                 "type": "ListLiteral"
             },
             "name": "whitespaceChars",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 32,
@@ -406,12 +407,12 @@
                     "line": 81
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": "TODO: Expr",
             "name": "multilineString",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 4,
@@ -422,8 +423,7 @@
                     "line": 85
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -441,6 +441,7 @@
                 "type": "ListLiteral"
             },
             "name": "multilineStringQuoteHandling",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -451,8 +452,7 @@
                     "line": 99
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         }
     ],
     "imports": {},

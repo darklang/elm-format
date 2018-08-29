@@ -9,6 +9,7 @@
                 "value": 1
             },
             "name": "a",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -19,8 +20,7 @@
                     "line": 34
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -31,6 +31,7 @@
                 "value": 2
             },
             "name": "b",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -41,8 +42,7 @@
                     "line": 38
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         },
         {
             "expression": {
@@ -53,6 +53,7 @@
                 "value": 3
             },
             "name": "c",
+            "returnType": null,
             "sourceLocation": {
                 "end": {
                     "col": 6,
@@ -63,8 +64,7 @@
                     "line": 42
                 }
             },
-            "type": "Definition",
-            "typeAnnotation": null
+            "type": "Definition"
         }
     ],
     "imports": {

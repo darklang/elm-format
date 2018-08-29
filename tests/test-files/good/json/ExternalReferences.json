@@ -5,10 +5,10 @@
             "expression": "TODO: Expr",
             "name": "token",
             "returnType": {
-                "type": "TypeReference",
-                "name": "String",
+                "arguments": [],
                 "module": "String",
-                "arguments": []
+                "name": "String",
+                "type": "TypeReference"
             },
             "sourceLocation": {
                 "end": {

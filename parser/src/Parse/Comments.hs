@@ -27,5 +27,5 @@ withEol a =
         result <- a
         multiline <- popNewlineContext
         if multiline
-            then return (result, Nothing)
-            else (,) result <$> restOfLine
+            then return $ WithEol result Nothing
+            else WithEol result <$> restOfLine
