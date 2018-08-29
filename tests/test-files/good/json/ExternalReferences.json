@@ -1,12 +1,11 @@
 {
     "body": [
-        "TODO: Decl",
         {
             "expression": "TODO: Expr",
             "name": "token",
             "returnType": {
                 "arguments": [],
-                "module": "String",
+                "module": null,
                 "name": "String",
                 "type": "TypeReference"
             },
@@ -22,7 +21,6 @@
             },
             "type": "Definition"
         },
-        "TODO: Decl",
         {
             "expression": {
                 "arguments": [
@@ -82,7 +80,6 @@
             },
             "type": "Definition"
         },
-        "TODO: Decl",
         {
             "expression": {
                 "identifier": "text",
@@ -134,7 +131,6 @@
             },
             "type": "Definition"
         },
-        "TODO: Decl",
         {
             "expression": {
                 "arguments": [

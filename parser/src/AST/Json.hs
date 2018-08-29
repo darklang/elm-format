@@ -97,8 +97,12 @@ mergeDeclarations decls =
                         , _doc = Nothing -- TODO
                         , _annotation = Map.lookup name annotations
                         }
-                _ ->
+
+                Entry (A _ (TypeAnnotation _ _)) ->
                     Nothing
+
+                Entry (A region other) ->
+                    Just $ A region $ TodoTopLevelStructure $ show other
     in
     mapMaybe merge decls
 
