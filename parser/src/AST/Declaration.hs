@@ -1,4 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
+{-# LANGUAGE DeriveGeneric #-}
+
 module AST.Declaration where
 
 import AST.V0_16
@@ -7,6 +9,7 @@ import qualified AST.Pattern as Pattern
 import qualified AST.Variable as Var
 import qualified Reporting.Annotation as A
 import qualified Cheapskate.Types as Markdown
+import GHC.Generics
 
 
 -- DECLARATIONS
@@ -28,7 +31,7 @@ data Declaration
     | PortDefinition (Commented LowercaseIdentifier) Comments Expression.Expr
     | Fixity Assoc Comments Int Comments Var.Ref
     | Fixity_0_19 (PreCommented Assoc) (PreCommented Int) (Commented SymbolIdentifier) (PreCommented LowercaseIdentifier)
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 instance A.Strippable Declaration where
@@ -41,7 +44,7 @@ instance A.Strippable Declaration where
 -- INFIX STUFF
 
 data Assoc = L | N | R
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 assocToString :: Assoc -> String
@@ -59,7 +62,7 @@ data TopLevelStructure a
     = DocComment Markdown.Blocks
     | BodyComment Comment
     | Entry (A.Located a)
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 instance A.Strippable a => A.Strippable (TopLevelStructure a) where

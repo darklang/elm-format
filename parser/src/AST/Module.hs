@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric #-}
+
 module AST.Module
     ( Module(..), Header(..), SourceTag(..)
     , UserImport, ImportMethod(..)
@@ -10,6 +12,7 @@ import qualified Cheapskate.Types as Markdown
 import Data.Map.Strict (Map)
 import qualified Reporting.Annotation as A
 import AST.V0_16
+import GHC.Generics
 
 
 -- MODULES
@@ -22,7 +25,7 @@ data Module = Module
     , imports :: PreCommented (Map [UppercaseIdentifier] (Comments, ImportMethod))
     , body :: [TopLevelStructure Declaration]
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 instance A.Strippable Module where
@@ -48,7 +51,7 @@ data SourceTag
   = Normal
   | Effect Comments
   | Port Comments
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic)
 
 
 {-| Basic info needed to identify modules and determine dependencies. -}
@@ -58,7 +61,7 @@ data Header = Header
     , moduleSettings :: Maybe (KeywordCommented SourceSettings)
     , exports :: KeywordCommented (Var.Listing DetailedListing)
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data DetailedListing = DetailedListing
@@ -66,7 +69,7 @@ data DetailedListing = DetailedListing
     , operators :: Var.CommentedMap SymbolIdentifier ()
     , types :: Var.CommentedMap UppercaseIdentifier (Comments, Var.Listing (Var.CommentedMap UppercaseIdentifier ()))
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 type SourceSettings =
@@ -82,4 +85,4 @@ data ImportMethod = ImportMethod
     { alias :: Maybe (Comments, PreCommented UppercaseIdentifier)
     , exposedVars :: (Comments, PreCommented (Var.Listing DetailedListing))
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)

@@ -112,7 +112,7 @@ instance ToJSON (TopLevelStructure Declaration) where
       , ("expression" , showJSON expr)
       , sourceLocation region
       ]
-  showJSON _ = JSString $ toJSString "TODO: Decl"
+  showJSON decl = JSString $ toJSString $ "TODO: Decl(" ++ show decl ++ ")"
 
 
 instance ToJSON Expr where
@@ -309,7 +309,7 @@ instance ToJSON Expr where
                   ]
 
           _ ->
-              JSString $ toJSString "TODO: Expr"
+              JSString $ toJSString $ "TODO: Expr (" ++ show expr ++ ")"
 
 
 variableReference :: Region.Region -> String -> JSValue

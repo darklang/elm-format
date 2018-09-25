@@ -1,8 +1,11 @@
 {-# OPTIONS_GHC -Wall #-}
+{-# LANGUAGE DeriveGeneric #-}
+
 module AST.Pattern where
 
 import AST.V0_16
 import qualified Reporting.Annotation as A
+import GHC.Generics
 
 
 type Pattern =
@@ -26,4 +29,4 @@ data Pattern'
         }
     | Record [Commented LowercaseIdentifier]
     | Alias (Pattern, Comments) (Comments, LowercaseIdentifier)
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)

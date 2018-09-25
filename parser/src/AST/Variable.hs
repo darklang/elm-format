@@ -1,14 +1,17 @@
+{-# LANGUAGE DeriveGeneric #-}
+
 module AST.Variable where
 
 import AST.V0_16
 import Data.Map.Strict
+import GHC.Generics
 
 
 data Ref
     = VarRef [UppercaseIdentifier] LowercaseIdentifier
     | TagRef [UppercaseIdentifier] UppercaseIdentifier
     | OpRef SymbolIdentifier
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 -- LISTINGS
@@ -18,7 +21,7 @@ data Listing a
     = ExplicitListing a Bool
     | OpenListing (Commented ())
     | ClosedListing
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 type CommentedMap k v =
@@ -30,4 +33,4 @@ data Value
     = Value !LowercaseIdentifier
     | OpValue SymbolIdentifier
     | Union (PostCommented UppercaseIdentifier) (Listing (CommentedMap UppercaseIdentifier ()))
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)

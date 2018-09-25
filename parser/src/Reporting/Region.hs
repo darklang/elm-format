@@ -1,21 +1,23 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveGeneric #-}
 module Reporting.Region where
 
 import qualified Text.Parsec.Pos as Parsec
+import GHC.Generics
 
 
 data Region = Region
     { start :: Position
     , end :: Position
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data Position = Position
     { line :: Int
     , column :: Int
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 fromSourcePos :: Parsec.SourcePos -> Position

@@ -1,24 +1,27 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE DeriveGeneric #-}
+
 module AST.Expression where
 
 import AST.V0_16
 import qualified AST.Pattern as Pattern
 import qualified AST.Variable as Var
 import qualified Reporting.Annotation as A
+import GHC.Generics
 
 
 ---- GENERAL AST ----
 
 data UnaryOperator =
     Negative
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data LetDeclaration
   = LetDefinition Pattern.Pattern [(Comments, Pattern.Pattern)] Comments Expr
   | LetAnnotation (Var.Ref, Comments) (Comments, Type)
   | LetComment Comment
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic)
 
 
 type Expr =
@@ -65,7 +68,7 @@ data Expr'
 
     -- for type checking and code gen only
     | GLShader String
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 instance A.Strippable Expr' where

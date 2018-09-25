@@ -1,14 +1,16 @@
 {-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE DeriveGeneric #-}
 module Cheapskate.Types where
 import Data.Sequence (Seq)
 import Data.Text (Text)
 import qualified Data.Map as M
 import Data.Data
+import GHC.Generics
 
 -- | Structured representation of a document.  The 'Options' affect
 -- how the document is rendered by `toHtml`.
 data Doc = Doc Options Blocks
-           deriving (Show, Data, Typeable)
+           deriving (Show, Data, Typeable, Generic)
 
 -- | Block-level elements.
 data Block = Para Inlines
@@ -20,18 +22,18 @@ data Block = Para Inlines
            | HRule
            | ReferencesBlock [(Text, Text, Text)]
            | ElmDocs [[Text]]
-           deriving (Show, Data, Typeable, Eq)
+           deriving (Show, Data, Typeable, Generic, Eq)
 
 -- | Attributes for fenced code blocks.  'codeLang' is the
 -- first word of the attribute line, 'codeInfo' is the rest.
 data CodeAttr = CodeAttr { codeLang :: Text, codeInfo :: Text }
-              deriving (Show, Data, Typeable, Eq)
+              deriving (Show, Data, Typeable, Generic, Eq)
 
-data ListType = Bullet Char | Numbered NumWrapper Int deriving (Eq,Show,Data,Typeable)
-data NumWrapper = PeriodFollowing | ParenFollowing deriving (Eq,Show,Data,Typeable)
+data ListType = Bullet Char | Numbered NumWrapper Int deriving (Eq,Show,Data,Typeable, Generic)
+data NumWrapper = PeriodFollowing | ParenFollowing deriving (Eq,Show,Data,Typeable, Generic)
 
 -- | Simple representation of HTML tag.
-data HtmlTagType = Opening Text | Closing Text | SelfClosing Text deriving (Show, Data, Typeable)
+data HtmlTagType = Opening Text | Closing Text | SelfClosing Text deriving (Show, Data, Typeable, Generic)
 
 -- We operate with sequences instead of lists, because
 -- they allow more efficient appending on to the end.
@@ -49,13 +51,13 @@ data Inline = Str Text
             | Image Inlines Text {- URL -} Text {- title -}
             | Entity Text
             | RawHtml Text
-            deriving (Show, Data, Typeable, Eq)
+            deriving (Show, Data, Typeable, Generic, Eq)
 
 
 data LinkTarget
     = Url Text
     | Ref Text
-    deriving (Show, Data, Eq)
+    deriving (Show, Data, Eq, Generic)
 
 
 type Inlines = Seq Inline
@@ -69,4 +71,4 @@ data Options = Options{
   , preserveHardBreaks :: Bool  -- ^ Preserve hard line breaks in the source
   , debug              :: Bool  -- ^ Print container structure for debugging
   }
-  deriving (Show, Data, Typeable)
+  deriving (Show, Data, Typeable, Generic)

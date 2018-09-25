@@ -1,4 +1,6 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -Wall #-}
+
 module ElmFormat where
 
 import Prelude hiding (putStr, putStrLn)
@@ -16,10 +18,17 @@ import ElmFormat.InputConsole (InputConsole)
 import ElmFormat.OutputConsole (OutputConsole)
 import ElmFormat.World
 
-import qualified AST.Json
+import Data.Aeson
+import Data.Aeson.Text
+import Data.Aeson.Encoding
+
+import qualified AST.Json2
 import qualified AST.Module
 import qualified Flags
+import qualified Data.Text.Encoding
 import qualified Data.Text as Text
+import qualified Data.Text.Lazy
+import qualified Data.Text.Lazy.Encoding
 import qualified ElmFormat.Execute as Execute
 import qualified ElmFormat.InputConsole as InputConsole
 import qualified ElmFormat.Parse as Parse
@@ -391,7 +400,7 @@ doIt elmVersion whatToDo =
                 formatFile file = (format elmVersion <$> ElmFormat.readFile file) >>= logErrorOr ElmFormat.updateFile
 
         StdinToJson ->
-            (fmap (Text.pack . Text.JSON.encode . AST.Json.showModule) <$> parseModule <$> readStdin) >>= logErrorOr OutputConsole.writeStdout
+            (fmap (Data.Text.Lazy.toStrict . Data.Text.Lazy.Encoding.decodeUtf8 . Data.Aeson.encode . toJSON) <$> parseModule <$> readStdin) >>= logErrorOr OutputConsole.writeStdout
 
         -- TODO: this prints "Processing such-and-such-a-file.elm" which makes the JSON output invalid
         -- FileToJson inputFile ->

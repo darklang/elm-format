@@ -1,8 +1,10 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE DeriveGeneric #-}
 module AST.V0_16 where
 
 import qualified Reporting.Annotation as A
 import Data.Int (Int64)
+import GHC.Generics
 
 
 type List a = [a]
@@ -10,22 +12,22 @@ type List a = [a]
 
 newtype ForceMultiline =
     ForceMultiline Bool
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data LowercaseIdentifier =
     LowercaseIdentifier String
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 data UppercaseIdentifier =
     UppercaseIdentifier String
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 data SymbolIdentifier =
     SymbolIdentifier String
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 data Comment
@@ -34,7 +36,7 @@ data Comment
     | CommentTrickOpener
     | CommentTrickCloser
     | CommentTrickBlock String
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 type Comments = [Comment]
@@ -42,7 +44,7 @@ type Comments = [Comment]
 
 data Commented a =
     Commented Comments a Comments
-    deriving (Eq, Ord, Show)
+    deriving (Eq, Ord, Show, Generic)
 
 
 instance Functor Commented where
@@ -52,7 +54,7 @@ instance Functor Commented where
 
 data KeywordCommented a =
   KeywordCommented Comments Comments a
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic)
 
 
 type PreCommented a = (Comments, a)
@@ -119,7 +121,7 @@ TODO: this should be replaced with (Sequence a)
 -}
 data OpenCommentedList a
     = OpenCommentedList [Commented (WithEol a)] (PreCommented (WithEol a))
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 exposedToOpen :: Comments -> ExposedCommentedList a -> OpenCommentedList a
 exposedToOpen pre exposed =
@@ -146,13 +148,13 @@ data Pair key value =
         , _value :: PreCommented value
         , forceMultiline :: ForceMultiline
         }
-    deriving (Show, Eq)
+    deriving (Show, Eq, Generic)
 
 
 data Multiline
     = JoinAll
     | SplitAll
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 isMultiline :: Multiline -> Bool
@@ -163,19 +165,19 @@ isMultiline SplitAll = True
 data FunctionApplicationMultiline
     = FASplitFirst
     | FAJoinFirst Multiline
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data IntRepresentation
   = DecimalInt
   | HexadecimalInt
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic)
 
 
 data FloatRepresentation
   = DecimalFloat
   | ExponentFloat
-  deriving (Eq, Show)
+  deriving (Eq, Show, Generic)
 
 
 data Literal
@@ -184,13 +186,13 @@ data Literal
     | Chr Char
     | Str String Bool
     | Boolean Bool
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data TypeConstructor
     = NamedConstructor [UppercaseIdentifier]
     | TupleConstructor Int -- will be 2 or greater, indicating the number of elements in the tuple
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 data Type'
@@ -210,7 +212,7 @@ data Type'
         , rest :: [(Comments, Comments, Type, Maybe String)]
         , forceMultiline :: ForceMultiline
         }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic)
 
 
 type Type =

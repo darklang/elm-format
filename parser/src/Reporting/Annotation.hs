@@ -1,15 +1,17 @@
+{-# LANGUAGE DeriveGeneric #-}
 module Reporting.Annotation where
 
 import Prelude hiding (map)
 import qualified Reporting.Region as R
 import qualified Data.String as String
+import GHC.Generics
 
 
 -- ANNOTATION
 
 data Located a =
     A R.Region a
-    deriving (Eq)
+    deriving (Eq, Generic)
 
 
 instance (Show a) => Show (Located a) where
